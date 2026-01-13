@@ -25,6 +25,7 @@
 #include <freertos/task.h>
 #include <stdarg.h>
 #include <vector>
+#include <functional>
 
 #define UART_BUF_SIZE 2048
 
@@ -165,7 +166,11 @@ public:
         end();
     }
 
+    using DMXReceiveCallback = std::function<void(uint8_t*, int)>;
+    void onReceive(DMXReceiveCallback callback);
+
 private:
+
     void dmxTxTask();
     void dmxRxTask();
     TaskHandle_t dmx_tx_task_handle;
@@ -181,6 +186,8 @@ private:
     DMXMode mode;
     QueueHandle_t uart_queue;
     bool initialized = false;
+    DMXReceiveCallback callback = nullptr;
+
 };
 
 /**
