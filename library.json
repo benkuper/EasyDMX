@@ -3,13 +3,11 @@
   "version": "1.2.1",
   "description": "EasyDMX is a library designed for sending and receiving DMX512 with an ESP32, aimed at providing simplicity and ease of use",
   "keywords": "dmx, stage, lighting",
-  "repository":
-  {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/tesa-klebeband/EasyDMX.git"
+    "url": "https://github.com/benkuper/EasyDMX.git"
   },
-  "authors":
-  [
+  "authors": [
     {
       "name": "tesa-klebeband",
       "url": "https://github.com/tesa-klebeband",
@@ -18,5 +16,9 @@
   ],
   "license": "GPL-3.0-or-later",
   "frameworks": "*",
-  "platforms": "espressif"
+  "platforms": "espressif32",
+  "build": {
+    "includeDir": ".",
+    "srcFilter": "+<*.cpp> +<*.c> +<src/*.cpp> +<src/*.c>"
+  }
 }
